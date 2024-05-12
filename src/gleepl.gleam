@@ -99,7 +99,10 @@ pub fn set_from(
 /// gleepl.new()
 /// |> gleepl.set_to(langs.from_iso("es"))
 /// ```
-pub fn set_to(request: TranslationRequest, language: Language) -> TranslationRequest {
+pub fn set_to(
+  request: TranslationRequest,
+  language: Language,
+) -> TranslationRequest {
   TranslationRequest(..request, to: Some(language))
 }
 

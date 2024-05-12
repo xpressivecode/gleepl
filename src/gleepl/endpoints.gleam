@@ -8,14 +8,10 @@ pub type Endpoint {
 /// free
 /// // -> Endpoint("https://api-free.deepl.com/v2/translate")
 /// ```
-pub const free: Endpoint = Endpoint(
-  "https://api-free.deepl.com/v2/translate",
-)
+pub const free: Endpoint = Endpoint("https://api-free.deepl.com/v2/translate")
 
 /// ```gleam
 /// paid
 /// // -> Endpoint("https://api.deepl.com/v2/translate")
 /// ```
-pub const paid: Endpoint = Endpoint(
-  "https://api.deepl.com/v2/translate",
-)
+pub const paid: Endpoint = Endpoint("https://api.deepl.com/v2/translate")

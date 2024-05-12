@@ -7,8 +7,11 @@ pub type Language {
 }
 
 pub const english: Language = Language("en")
+
 pub const french: Language = Language("fr")
+
 pub const german: Language = Language("de")
+
 pub const slovenian: Language = Language("sl")
 
 /// Returns a language type for the iso language code without having to wait for gleepl updates.
