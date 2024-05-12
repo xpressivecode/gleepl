@@ -10,12 +10,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: test
     steps:
       - uses: actions/checkout@v4
       - uses: erlef/setup-beam@v1
-        env:
-          DEEPL_AUTH_KEY: ${{ secrets.DEEPL_AUTH_KEY }}
         with:
           otp-version: "26.0.2"
           gleam-version: "1.1.0"
