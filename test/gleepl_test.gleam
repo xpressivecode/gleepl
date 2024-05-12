@@ -1,4 +1,5 @@
-import envoy
+import dot_env
+import dot_env/env
 import gleepl
 import gleepl/endpoints
 import gleepl/langs
@@ -11,6 +12,7 @@ pub fn main() {
 
 // DO NOT FORGET TO SET YOUR AUTH KEY IN `init_request`
 // DEFAULTS TO `DEEPL_AUTH_KEY` ENV VAR
+//
 
 pub fn from_en_to_fr_test() {
   init_request()
@@ -85,7 +87,8 @@ pub fn from_iso_lang_to_en_test() {
 }
 
 fn init_request() -> gleepl.TranslationRequest {
-  let assert Ok(auth_key) = envoy.get("DEEPL_AUTH_KEY")
+  dot_env.load()
+  let assert Ok(auth_key) = env.get("DEEPL_AUTH_KEY")
 
   gleepl.new()
   |> gleepl.set_auth_key(auth_key)
