@@ -138,7 +138,7 @@ pub fn set_text(request: TranslationRequest, text: String) -> TranslationRequest
 pub fn translate(request: TranslationRequest) -> Result(String, Dynamic) {
   case validate_request(request) {
     Ok(_) -> exec_request(request)
-    Error(e) -> Error(dynamic.from(e))
+    Error(validation_err) -> Error(dynamic.from(validation_err))
   }
 }
 
@@ -208,7 +208,7 @@ fn exec_request(
       ..request,
       headers: [
         #("content-type", "application/json"),
-        #("Authorization", "Deepl-Auth-Key " <> auth_key),
+        #("Authorization", "DeepL-Auth-Key " <> auth_key),
       ],
     )
   let request =
@@ -225,7 +225,13 @@ fn exec_request(
     Ok(resp) -> {
       case resp.status {
         200 -> pluck_translation(resp.body)
-        _ -> Error(dynamic.from(resp.body))
+        403 -> Error(dynamic.from("Authorization failed: auth key is invalid"))
+        413 -> Error(dynamic.from("Request entity too large: text is too long"))
+        429 -> Error(dynamic.from("Too many requests: rate limit exceeded"))
+        456 -> Error(dynamic.from("Quota exceeded: character limit exceeded"))
+        _ -> {
+          Error(dynamic.from(resp.status))
+        }
       }
     }
     Error(err) -> Error(err)

@@ -7,6 +7,7 @@ import gleeunit
 import gleeunit/should
 
 pub fn main() {
+  dot_env.load()
   gleeunit.main()
 }
 
@@ -87,7 +88,6 @@ pub fn from_iso_lang_to_en_test() {
 }
 
 fn init_request() -> gleepl.TranslationRequest {
-  dot_env.load()
   let assert Ok(auth_key) = env.get("DEEPL_AUTH_KEY")
 
   gleepl.new()
