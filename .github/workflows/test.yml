@@ -20,4 +20,7 @@ jobs:
           # elixir-version: "1.15.4"
       - run: gleam deps download
       - run: gleam test
+        env:
+          DEEPL_AUTH_KEY: ${{ secrets.DEEPL_AUTH_KEY }}
       - run: gleam format --check src test
+
