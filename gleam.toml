@@ -1,0 +1,17 @@
+name = "gleepl"
+version = "1.0.0"
+gleam = ">= 1.0.0"
+
+description = "A Gleam client for the DeepL API"
+repository = { type = "github", user = "xpressivecode", repo = "gleepl" }
+licenses = ["MIT"]
+
+[dependencies]
+gleam_stdlib = ">= 0.34.0 and < 2.0.0"
+gleam_httpc = ">= 2.2.0 and < 3.0.0"
+gleam_http = ">= 3.6.0 and < 4.0.0"
+gleam_json = ">= 1.0.1 and < 2.0.0"
+
+[dev-dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
+dot_env = ">= 0.5.1 and < 1.0.0"
